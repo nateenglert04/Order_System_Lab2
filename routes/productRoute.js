@@ -22,16 +22,16 @@ router.post('/', async (req, res) => {
 // Delete a Product (by ID)
 router.delete('/:id', async (req, res) => {
     try {
-      const productId = req.params.id;
-      const product = await Product.findById(productId);
+      const productID = req.params.id;
+      const product = await Product.findById(productID);
       if (!product) {
         return res.status(404).json({ message: 'Product not found' });
       }
       await product.deleteOne();
 
       await Order.updateMany(
-        { 'items.productID': productId }, 
-        { $pull: { items: { productId } } } 
+        { 'items.productID': productID }, 
+        { $pull: { items: { productID } } } 
       );
 
       res.json({ message: 'Product deleted and removed from current orders' });

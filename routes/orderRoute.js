@@ -7,13 +7,13 @@ const Product = require('../models/product');
 // Create an Order
 router.post('/', async (req, res) => {
     try {
-      const { customerId, items } = req.body;
+      const { customerID, items } = req.body;
 
-      if (!customerId || !items || items.length === 0) {
+      if (!customerID || !items || items.length === 0) {
         return res.status(400).json({ message: 'CustomerID and items are required' });
       }
 
-      const customer = await Customer.findById(customerId);
+      const customer = await Customer.findById(customerID);
       if (!customer) {
         return res.status(404).json({ message: 'Customer not found' });
       }
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
         await product.save();
       }
 
-      const newOrder = new Order({customerId, items, totalPrice });
+      const newOrder = new Order({customerID, items, totalPrice });
       await newOrder.save();
       res.status(201).json(newOrder);
     } catch (err) {
