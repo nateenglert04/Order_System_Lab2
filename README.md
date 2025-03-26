@@ -44,4 +44,4 @@ The API endpoints for the respective schemas are provided under Order_System_Lab
 The Postman_Lab2.zip contains a Postman collection JSON file containing the API endpoints to be tested. Furthermore, a Postman environment JSON file is used to automatically assign the relevant IDs (customer_id, product_id, and order_id) within global variables for ease of testing. 
 
 ## Swagger
-The Swagger documentation for Order_System_Lab2 can be accessed at http://localhost:3000/api-docs and will cover the uses of the API endpoints and relevant examples for each endpoint.
+The Swagger documentation for Order_System_Lab2 can be accessed at http://localhost:4000/api-docs and will cover the uses of the API endpoints and relevant examples for each endpoint.
