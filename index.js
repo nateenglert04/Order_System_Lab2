@@ -40,11 +40,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use(express.json());
 
 // MongoDB Connection
-const MONGO_URI = process.env.MONGO_URI || 'mongodb+srv://nenglert22:PUL2IhMSFTfpr68Y@lab2.ex0vk.mongodb.net/?retryWrites=true&w=majority&appName=Lab2';
-mongoose.connect(MONGO_URI, {
-  ssl: true,
-  tlsAllowInvalidCertificates: false
-});
+mongoose.connect('mongodb://mongodb:27017/order_system');
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));

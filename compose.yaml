@@ -1,22 +1,24 @@
 
 services:
-  app:
-    build:
-      context: .
-    environment:
-      NODE_ENV: production
-    ports:
-      - 4000:3000
-    image: nateenglert2304/order_system:latest
-    depends_on: mongodb
   mongodb:
-    image: mongo-latest
-    container_name: mongo
+    image: mongo:latest
+    container_name: mongodb
     restart: always
     ports:
-      - 27017:27017
+      - "27017:27017"
     volumes:
       - mongo-data:/data/db
+  app:
+    image: nateenglert2304/order_system:latest
+    depends_on: 
+      - mongodb
+    environment:
+      - PORT=3000
+      - DB_HOST=mongodb
+      - DB_PORT=27017
+      - DB_NAME=order_system
+    ports:
+      - "4000:3000"
 
 volumes:
   mongo-data:
